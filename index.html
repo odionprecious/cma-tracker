@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CMA Tracking Portal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f6f8fa;
+      padding: 20px;
+    }
+    .tracking-container {
+      background-color: #fff;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+      padding: 30px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+    button {
+      background-color: #0077cc;
+      color: white;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #e9f6ec;
+      border-left: 4px solid #2e8b57;
+    }
+    .error {
+      background-color: #fdecea;
+      border-left: 4px solid #e74c3c;
+    }
+  </style>
+</head>
+<body>
+
+<div class="tracking-container">
+  <h2>CMA Tracking Portal</h2>
+  <p>Enter your tracking number below:</p>
+  <input type="text" id="trackingInput" placeholder="e.g., CMA123456789">
+  <button onclick="trackPackage()">Track</button>
+  <div id="trackingResult"></div>
+</div>
+
+<script>
+  function trackPackage() {
+    const input = document.getElementById("trackingInput").value.trim();
+    const resultBox = document.getElementById("trackingResult");
+    resultBox.innerHTML = "";
+
+    if (input === "CMA123456789") {
+      resultBox.innerHTML = `
+        <div class="result">
+          <strong>Status:</strong> In Transit<br>
+          <strong>Tracking Code:</strong> CMA123456789<br>
+          <strong>Destination:</strong> Spain<br>
+          <strong>Estimated Delivery:</strong> 17 June 2025<br>
+          <strong>Last Location:</strong> Paris, France (16 June 2025)
+        </div>`;
+    } else {
+      resultBox.innerHTML = `
+        <div class="result error">
+          Invalid tracking number. Please try again.
+        </div>`;
+    }
+  }
+</script>
+
+</body>
+</html>
